@@ -32,6 +32,10 @@ class CommentsDialogFragment : BottomSheetDialogFragment() {
         binding.rvComments.apply {
             this.layoutManager= LinearLayoutManager(activity)
         }
+        binding.iconRefresh.setOnClickListener {
+            viewModel.getLiveData().value?.clear()
+            viewModel.loadComments(requireArguments().getString("id").toString())
+        }
         return binding.root
     }
     private fun initViewModel() {
