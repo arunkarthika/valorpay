@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.valorpay.view.fragments.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_userDetail"
+            app:destination="@id/userDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.valorpay.view.fragments.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.valorpay.view.fragments.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/userDetail"
+        android:name="com.example.valorpay.view.fragments.UserDetail"
+        android:label="User"
+        tools:layout="@layout/fragment_user_detail" >
+        <argument
+            android:name="userId"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <action
+            android:id="@+id/action_userDetail_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.valorpay.view.fragments.PostFragment"
+        android:label="Posts"
+        tools:layout="@layout/fragment_post" >
+        <action
+            android:id="@+id/action_postFragment_to_commentsDialogFragment"
+            app:destination="@id/commentsDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/commentsDialogFragment"
+        android:name="com.example.valorpay.view.fragments.CommentsDialogFragment"
+        android:label="Comments"
+        tools:layout="@layout/fragment_comments_dialog_list_dialog" />
+</navigation>
